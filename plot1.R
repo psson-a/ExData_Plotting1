@@ -14,4 +14,8 @@ stopdate <- as.Date("2007-02-02")
 selected <- myData[(myData$converted_date >= startdate) & (myData$converted_date <=stopdate),]
 
 myData <- read.table("household_power_consumption.txt", nrows=2880, skip=66637, sep=';', colClasses=cclasses, col.names=cnames)
+#myData$Date <- as.Date(myData$Date, format="%d/%m/%Y")
+#myData$Time <- strptime(myData$Time, format="%H:%M:%S")
+#myData$timestamp <- paste(myData$Date, myData$Time, sep=",")
+myData$timestamp <- strptime(paste(myData$Date, myData$Time, sep=","), format="%d/%m/%Y,%H:%M:%S")
 # 2007-02-01 and 2007-02-02. (february)
