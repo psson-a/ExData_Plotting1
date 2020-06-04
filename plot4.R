@@ -28,10 +28,10 @@ myData <- read.table("household_power_consumption.txt", nrows=(stoprow-startrow+
 myData$timestamp <- strptime(paste(myData$Date, myData$Time, sep=","), 
                              format="%d/%m/%Y,%H:%M:%S")
 
-#png("plot4.png")
+png("plot4.png")
 
 #plot 4: 4 different panels.
-par(mfrow=c(2,2))
+par(mfrow=c(2,2), mar=c(4,4,3,3) , cex=0.8)
 #plot1:
 with(myData, plot(Global_active_power ~ as.POSIXct(timestamp), type='l', ylab="Global Active Power (kilowatts)", xlab=""))
 
@@ -43,10 +43,10 @@ with(myData, plot (Voltage ~ as.POSIXct(timestamp), type='l', xlab="datetime"))
 with(myData, plot(Sub_metering_1 ~ as.POSIXct(timestamp), type='l', col="black", ylab="Energy sub metering", xlab=""))
 with(myData, lines(Sub_metering_2 ~ as.POSIXct(timestamp), type='l', col="red", ylab="Energy sub metering", xlab=""))
 with(myData, lines(Sub_metering_3 ~ as.POSIXct(timestamp), type='l', col="blue", ylab="Energy sub metering", xlab=""))
-legend("topright", bty="n", lwd=1, col=c("black","red","blue"),legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", bty="n", lwd=1, col=c("black","red","blue"),legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.9)
 
 #plot4
 with(myData, plot (Global_reactive_power ~ as.POSIXct(timestamp), type='l', xlab="datetime"))
 
 
-#dev.off()
+dev.off()
